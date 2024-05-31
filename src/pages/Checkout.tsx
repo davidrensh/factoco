@@ -1,6 +1,6 @@
 // src/pages/Checkout.tsx
 import React from 'react';
-import { Container, TextField, Button } from '@fluentui/react';
+import { TextField, PrimaryButton } from '@fluentui/react';
 
 const Checkout: React.FC = () => {
   const handlePayment = () => {
@@ -8,13 +8,13 @@ const Checkout: React.FC = () => {
   };
 
   return (
-    <Container>
-      <Typography variant="h2">Checkout</Typography>
+    <div>
+      <h2>Checkout</h2>
       <TextField label="Credit Card Number" />
       <TextField label="Expiry Date" />
       <TextField label="CVC" />
-      <Button onClick={handlePayment}>Pay Now</Button>
-    </Container>
+      <PrimaryButton onClick={handlePayment}>Pay Now</PrimaryButton>
+    </div>
   );
 };
 

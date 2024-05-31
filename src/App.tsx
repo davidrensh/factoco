@@ -1,6 +1,5 @@
-// src/App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import ProductListing from './pages/ProductListing';
 import ProductDetail from './pages/ProductDetail';
@@ -12,44 +11,17 @@ import Membership from './pages/Membership';
 const App: React.FC = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/products" exact component={ProductListing} />
-        <Route path="/products/:id" component={ProductDetail} />
-        <Route path="/cart" component={ShoppingCart} />
-        <Route path="/checkout" component={Checkout} />
-        <Route path="/auth" component={Auth} />
-        <Route path="/membership" component={Membership} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<ProductListing />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<ShoppingCart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/membership" element={<Membership />} />
+      </Routes>
     </Router>
   );
 };
 
 export default App;
-
-// import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;

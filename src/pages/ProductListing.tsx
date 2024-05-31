@@ -1,27 +1,33 @@
 // src/pages/ProductListing.tsx
 import React, { useEffect, useState } from 'react';
-import { Container, Typography, List, ListItem } from '@fluentui/react';
+import { Text, List, Stack } from '@fluentui/react';
 import { db } from '../firebaseConfig';
+import { collection, getDocs } from 'firebase/firestore';
 
 const ProductListing: React.FC = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<any[]>([]);
 
   useEffect(() => {
-    db.collection('products').get().then(snapshot => {
-      const productsData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const fetchProducts = async () => {
+      const querySnapshot = await getDocs(collection(db, 'products'));
+      const productsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setProducts(productsData);
-    });
+    };
+    fetchProducts();
   }, []);
 
   return (
-    <Container>
-      <Typography variant="h2">Our Furniture</Typography>
+    <div>
+      <Text variant="xxLarge">Our Furniture</Text>
       <List>
         {products.map(product => (
-          <ListItem key={product.id}>{product.name}</ListItem>
+          <Stack horizontal key={product.id}>
+            <Text variant="large">{product.name}</Text>
+            <Text variant="medium">${product.price}</Text>
+          </Stack>
         ))}
       </List>
-    </Container>
+    </div>
   );
 };
 

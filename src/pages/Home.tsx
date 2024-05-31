@@ -1,13 +1,20 @@
-// src/pages/Home.tsx
 import React from 'react';
-import { Container, Typography } from '@fluentui/react';
+import { Stack } from '@fluentui/react';
+import HeroSection from '../components/HeroSection';
+import NavigationMenu from '../components/NavigationMenu';
+import FeaturedCollections from '../components/FeaturedCollections';
+import PromotionalBanners from '../components/PromotionalBanners';
+import Footer from '../components/Footer';
 
 const Home: React.FC = () => {
   return (
-    <Container>
-      <Typography variant="h1">Welcome to Factoryou</Typography>
-      <Typography variant="body1">Discover our premium furniture...</Typography>
-    </Container>
+    <Stack>
+      <NavigationMenu />
+      <HeroSection />
+      <FeaturedCollections />
+      <PromotionalBanners />
+      <Footer />
+    </Stack>
   );
 };
 
